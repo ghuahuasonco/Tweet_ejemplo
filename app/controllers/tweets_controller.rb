@@ -4,9 +4,12 @@ class TweetsController < ApplicationController
 
   def read_message
    
-   return "No existe usuario" if self.user.blank?
-   Twitter.user_timeline(self.user).first.text
+    @tweet = Tweet.new(params[:tweet])
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tweets }
+    end
   end
 
   def index

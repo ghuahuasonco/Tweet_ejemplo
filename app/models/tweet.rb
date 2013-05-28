@@ -7,4 +7,11 @@ Twitter.configure do |config|
   config.oauth_token_secret = 'IMVhFa5opnkadFkwULoTc0yZ7Jzkb5oKNnYAVlzRE'
 end
 
+  def read_message
+   
+   return "No existe usuario" if self.user.blank?
+   Twitter.user_timeline(self.user).first.text
+  end
+
+
 end
